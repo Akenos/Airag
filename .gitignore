@@ -1,0 +1,108 @@
+# Node.js
+node_modules/
+package-lock.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+env/
+
+# General
+.DS_Store
+.env
+.idea/
+*.swp
+*~
+Thumbs.db
+.cache/
+.vscode/
+
+# OS-specific files
+.AppleDouble
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+desktop.ini
+
+# Deployment-related
+config/
+.htpasswd
+
+# Logs and temporary files
+*.log
+*.tmp
+temp/
+tmp/
+*.bak
+*.swp
+*.swo
+
+# Specific to your project
+# Add any other files or directories that should not be tracked by Git
+
+# Example for images (if you don't want to track them)
+# images/
+
+# Example for build artifacts
+dist/
+build/
+
+# Example for secret keys or configuration files (use with caution!)
+# IMPORTANT: Never commit sensitive information like API keys or passwords!
+# Instead, use environment variables.
+# sensitive_config.json
+
+# For create-react-app
+.env.local
+.env.development
+.env.test
+
+# For Vue.js
+.env.local
+
+# For Angular
+.env
+
+# For other frameworks, adapt as needed
+
+# Editor specific files (if you don't want to share them)
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore files larger than 100MB (adjust as needed)
+*.zip
+*.rar
+*.7z
+*.gz
+
+# Ignore files based on extension
+*.psd  # Photoshop files
+*.ai   # Illustrator files
+*.obj  # 3D object files (often large)
+*.fbx  # 3D object files (often large)
+
+# If using Docker
+.dockerignore
+
+# If using serverless framework
+.serverless
+
+# If using Terraform
+.terraform*
+*.tfstate
+
+# If using Kubernetes
+.kube/
+
+# If using yarn
+yarn-error.log
+
+# If using pnpm
+pnpm-lock.yaml
+
+# If using bun
+.bun/
+bun.lockb

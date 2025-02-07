@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/vendor/flag-icons/css/flag-icons.min.css">
+    
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/vendor/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <section>
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand text-uppercase" href="#">Dania Airag</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#packages">Packages</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#faq">FAQ</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </section>
+
+    <main>
+
+      <div class="modal fade" tabindex="-1" id="order-modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Order</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- <form action="">
+                <div class="form-floating">
+                  <input id="email1" type="email" class="form-control" placeholder="Yours">
+                  <label for="email1">your Email</label>
+                </div>
+              </form> -->
+
+              <form id="newOrderForm" method="post" action="/orders">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input id="email1" type="email" name="email" class="form-control" placeholder="Your Email" required>
+                      <label for="email1">Your Email</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input id="name1" type="text" name="name" class="form-control" placeholder="Your Full Name" required>
+                      <label for="name1">Your Full Name</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input id="phone1" type="tel" name="phone" class="form-control" placeholder="Your Phone Number" pattern="\d{10}" required>
+                      <label for="phone1">Your Phone Number</label>
+                      <small class="text-muted">Enter a valid 10-digit phone number (e.g., 1234567890)</small>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input id="street1" type="text" name="street" class="form-control" placeholder="Street Address" required>
+                      <label for="address1">Street Address</label>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-floating">
+                      <input id="city1" type="text" name="city" class="form-control" placeholder="City" required>
+                      <label for="city1">City</label>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-floating">
+                      <input id="state1" type="text" name="state" class="form-control" placeholder="State" required>
+                      <label for="state1">State</label>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-floating">
+                      <input id="zip1" type="text" name="zip" class="form-control" placeholder="ZIP Code" pattern="^\d{5}$" required>
+                      <label for="zip1">ZIP Code</label>
+                      <small class="text-muted">Enter a 5-digit ZIP code (e.g., 12345)</small>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-floating">
+                      <textarea id="notes1" name="notes" class="form-control" placeholder="Additional Notes" style="height: 100px;"></textarea>
+                      <label for="notes1">Additional Notes</label>
+                    </div>
+                  </div>
+                  <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-primary">Submit Order</button>
+                  </div>
+                </div>
+              </form>
+              
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active c-item">
+            <img src="/images/1315236-Timothe-ChalametDune-Desert.jpg" class="d-block w-100 c-img" alt="...">
+            <div class="carousel-caption d-none d-md-block top-0 mt-4">
+              <h1 class="fs-3 mt-5 text-uppercase">Taste Horse</h1>
+              <p class="display-1 fw-bolder text-capitalize">Best airag</p>
+              <button class="btn btn-primary px-3 py-3" data-bs-toggle="modal" data-bs-target="#order-modal">Order Now</button>
+            </div>
+          </div>
+          <div class="carousel-item c-item">
+            <img src="/images/20230827.jpg" class="d-block w-100 c-img" alt="...">
+            <div class="carousel-caption d-none d-md-block top-0 mt-4">
+              <h1 class="fs-3 mt-5 text-uppercase">mongolian steppe</h1>
+              <p class="display-1 fw-bolder text-capitalize">CHinggish Khaan</p>
+              <button class="btn btn-primary px-4 py-4" data-bs-toggle="modal" data-bs-target="#order-modal">Order Now</button>
+            </div>
+          </div>
+          <div class="carousel-item c-item">
+            <img src="/images/20240705.jpg" class="d-block w-100 c-img" alt="...">
+            <div class="carousel-caption d-none d-md-block top-0 mt-4">
+              <h1 class="fs-3 mt-5 text-uppercase">Tsagaan Sar</h1>
+              <p class="display-1 fw-bolder text-capitalize">Rage</p>
+              <button class="btn btn-primary px-2 py-1" data-bs-toggle="modal" data-bs-target="#order-modal">Order Now</button>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+    </main>
+    <section class="overview">
+      <div class="container h-100 d-flex align-items-center justify-content-center fs-4 text-center">
+        <div class="row w-100 text">
+            <!-- Column for horse icon and text -->
+            <div class="col-4 d-flex flex-column align-items-center mb-3">
+                <i class="fas fa-horse mb-2"></i>
+                100% authentic taste        
+            </div>
+            
+            <!-- Column for Mongolia flag and text -->
+            <div class="col-4 d-flex flex-column align-items-center mb-3">
+                <span class="fi fi-mn mb-2"></span>
+                True essence of Mongolia
+            </div>
+            
+            <!-- Column for Heerlen flag and text -->
+            <div class="col-4 d-flex flex-column align-items-center mb-3">
+                <span class="fi fi-nl mb-2"></span>
+                Made in Heerlen
+            </div>
+        </div>
+    </div>
+    </div>
+      </section>
+
+      <section id="packages" class="py-5">
+        <h2 class="my-5 text-center"> Packages</h2>
+       <div class="container">
+        <div class="row">
+          <div class="col-lg">
+            <div class="card" >
+              <img src="/images/20240229.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg">
+            <div class="card" >
+              <img src="/images/20240517.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg">
+            <div class="card" >
+              <img src="/images/20240705.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+       </div>
+                
+
+      </section>
+      <section id="faq py-sm-5">
+        <h3 class="my-5 text-center">FAQ</h3>
+        <div class="container">
+          <div class="accordion w-75 mx-auto" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                 How Much is the Shipment?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  How much is a bottle?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                 How Long doe it take?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="bg-dark py-5 mt-5">
+        <div class="container text-light text-center">
+          <p class="display-5 mb-3"> DANIA AIRAG</p>
+          <small class="text-white-50">&copy; Copyright by Jabu</small>
+        </div>
+
+      </footer>
+    
+</body>
+</html>
