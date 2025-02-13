@@ -8,47 +8,47 @@ const port = 4000;
 let currentOrders = [
   { // 0 th element of Orders
     id: 1, 
-    name: "Joohn Dutton",
-    email:"john@example.com",
+    name: "Joohn dutton",
+    email:"john@exaaample.eom",
     address: "musterstrasse 1, 45578 Berlin",
-    phone: "885552216",
+    phone: "885522017",
     date: "2023-08-01T10:00:00Z",
-    notes:"dont make cold",
+    notes:"dont makaaaaae cold",
     order: "#456",
-    editable: true,
+    editable: false,
   },
   { // 1st element of orders
     id: 2,
-    name: "William II",
-    email:"william@example.com",
-    address: "bendstrasse 56, 939378 München",
-    phone: "652314565",
+    name: "William ii",
+    email:"william@examples.com",
+    address: "bedstrasse 56, 939378 München",
+    phone: "65231s4565",
     date: "2023-08-01T10:00:00Z",
     notes:"Send in 2 days",
     order: "#457",
     editable: false,
   },
   { // 1st element of orders
-    id: 2,
-    name: "William II",
+    id: 3,
+    name: "Wiliam iIi",
     email:"william@example.com",
     address: "bendstrasse 56, 939378 München",
-    phone: "652314565",
+    phone: "652414565",
     date: "2023-08-01T10:00:00Z",
-    notes:"Send in 2 days",
+    notes:"Send in 21 days",
     order: "#457",
-    editable: true,
+    editable: false,
   },
   { // 1st element of orders
-    id: 2,
-    name: "William II",
+    id: 4,
+    name: "Williaam 4",
     email:"william@example.com",
     address: "bendstrasse 56, 939378 München",
     phone: "652314565",
     date: "2023-08-01T10:00:00Z",
-    notes:"Send in 2 days",
+    notes:"Send in 1 days",
     order: "#457",
-    editable: true,
+    editable: false,
   },
 ];
 
@@ -115,6 +115,20 @@ app.put("/orders/:id", (req, res) => {
   res.json(currentOrders[index]);
 });
 
+app.patch("/toggle/:id", (req, res) => {
+  const orderId = parseInt(req.params.id);
+  const order = currentOrders.find((o) => o.id === orderId);
+
+  if (!order) {
+    return res.status(404).json({ error: "Order not found" });
+  }
+  const newEditable = order.editable;
+  // Update only provided fields
+  order.editable = !newEditable; 
+  res.json(order);
+});
+
+
 // 📌 PARTIALLY update an order (PATCH)
 app.patch("/orders/:id", (req, res) => {
   const orderId = parseInt(req.params.id);
@@ -130,7 +144,7 @@ app.patch("/orders/:id", (req, res) => {
   if (req.body.address) order.address = req.body.address;
   if (req.body.phone) order.phone = req.body.phone;
   if (req.body.notes) order.notes = req.body.notes;
-  
+  //if (req.body.editable) order.editable = req.body.editable; 
   res.json(order);
 });
 

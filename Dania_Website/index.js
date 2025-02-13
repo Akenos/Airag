@@ -26,86 +26,34 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-// app.post("/orders", async (req, res) => {
-//   try {
-//     // Destructure required fields from the request body
-//     const { name, email, phone, street, city, state, zip, notes } = req.body;
+// making posts editable
+app.get("/orders/editToggle/:id", async (req, res) => {
+  console.log("[MY APP] Called for order:", req.params.id);
 
-//     // Combine the address fields into one address string
-//     const fullAddress = `${street}, ${zip} ${city}, ${state}`;
+  try {
+    //const post = await axios.get(`${API_URL}/orders/${req.params.id}`);
+    await axios.patch(`${API_URL}/toggle/${req.params.id}`);
 
-//     // Create the new order object to send to the external API
-//     const orderData = {
-//       name,
-//       email,
-//       phone,
-//       address: fullAddress, // Store the combined address
-//       notes,
-//     };
+    res.redirect("/admin");
+  } catch (error) {
+    console.error(" [MY APP] Error toggling editable:", error);
+    res.status(500).json({ message: "Error toggling editable" });
+  }
+});
 
-//     // Send the request to the external API
-//     const response = await axios.post(`${API_URL}/orders`, orderData);
-
-//     // Log the response from the external API (for debugging)
-//     console.log(response.data);
-
-//     // Respond with the data received from the external API
-//     res.status(201).json(response.data);
-//   } catch (error) {
-//     // Handle any errors that occur during the request
-//     console.error(error);
-//     res.status(500).json({ message: "Error creating order" });
-//   }
-// });
-
-// app.post("/orders", async (req, res) => {
-//     try {
-//       console.log("Received request body:", req.body); // Debugging line
-//       // Destructure required fields from the request body
-//       //const { name, email, phone, street, city, state, zip, notes } = req.body;
+// Partially updating an orden
+app.post("/orders/save/:id", async (req, res) => {
+  console.log("called");
+  try {
   
-//       // Combine the address fields into one address string
-//       const fullAddress = `${street}, ${zip} ${city}, ${state}`;
-  
-//       // Create the new order object to send to the external API
-//       const orderData = {
-//         name,
-//         email,
-//         phone,
-//         address: fullAddress, // Store the combined address
-//         notes,
-//       };
-//       console.log("Formatted orderData:", orderData); // Debugging line
-//       // Send the request to the external API
-//       const response = await axios.post(`${API_URL}/orders`, orderData);
-  
-//       // Log the response from the external API (for debugging)
-//       console.log(response.data);
-  
-//       // Respond with the data received from the external API
-//       res.status(201).json(response.data);
-//     } catch (error) {
-//       // Handle any errors that occur during the request
-//       console.error("Error creating order:", error.message);
-  
-//       // Provide more detailed error information
-//       if (error.response) {
-//         // The request was made and the server responded with a status code
-//         // that falls out of the range of 2xx
-//         res.status(error.response.status).json({
-//           message: "Error from external API",
-//           details: error.response.data,
-//         });
-//       } else if (error.request) {
-//         // The request was made but no response was received
-//         res.status(500).json({ message: "No response received from external API" });
-//       } else {
-//         // Something happened in setting up the request that triggered an Error
-//         res.status(500).json({ message: "Error setting up the request" });
-//       }
-//     }
-//   });
-app
+    const response = await axios.patch(`${API_URL}/orders/${req.params.id}`, req.body);
+    await axios.patch(`${API_URL}/toggle/${req.params.id}`);
+    console.log(response.data);
+    res.redirect("/admin");
+  } catch (error) {
+    res.status(500).json({ message: "Error updating Order" });
+  }
+});
 
 
 // Route to Submitting order by a Client
@@ -115,7 +63,7 @@ app.post("/orders", async (req, res) => {
     console.log(response.data);
     res.redirect("/");
   } catch (error) {
-    res.status(500).json({ message: "Error creating post" });
+    res.status(500).json({ message: "Error creating an Order" });
   }
 });
 // Route to render the Admin page
@@ -127,6 +75,15 @@ app.get("/admin", async(req, res) => { // when using Axion it is essential to us
       } catch (error) {
         res.status(500).json({ message: "Error fetching posts" });
       }
+  });
+
+  app.get("/orders/delete/:id", async (req, res) => {
+    try {
+      await axios.delete(`${API_URL}/orders/${req.params.id}`);
+      res.redirect("/admin");
+    } catch (error) {
+      res.status(500).json({ message: "Error deleting post" });
+    }
   });
 
 // Start server
